@@ -1,4 +1,5 @@
-﻿namespace SRDebugger.UI.Tabs
+﻿using System.Reflection;
+namespace SRDebugger.UI.Tabs
 {
     using System;
     using System.Collections.Generic;
@@ -57,6 +58,7 @@
             PinButton.onValueChanged.AddListener(SetSelectionModeEnabled);
 
             PinPromptText.SetActive(false);
+
             //PinPromptSpacer.SetActive(false);
 
             Populate();
@@ -151,6 +153,7 @@
 
             PinButton.isOn = isEnabled;
             PinPromptText.SetActive(isEnabled);
+
             //PinPromptSpacer.SetActive(isEnabled);
 
             foreach (var kv in _options)
@@ -272,6 +275,12 @@
                 {
                     memberList = new List<OptionDefinition>();
                     sortedOptions.Add(option.Category, memberList);
+                }
+
+                if (option.Property != null && !(option.Property.GetAttribute<SROptions.SrIgnoreAttribute>() is null) ||
+                    option.Method != null && !(option.Method.MethodInfo.GetCustomAttribute<SROptions.SrIgnoreAttribute>() is null))
+                {
+                    continue;
                 }
 
                 memberList.Add(option);

@@ -47,6 +47,15 @@ public partial class SROptions
             Name = name;
         }
     }
+
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Method)]
+    public sealed class SrIgnoreAttribute : Attribute
+    {
+        public SrIgnoreAttribute()
+        {
+            
+        }
+    }
 }
 
 #if NETFX_CORE

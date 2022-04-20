@@ -20,6 +20,11 @@
             get { return _method.Name; }
         }
 
+        public MethodInfo MethodInfo
+        {
+            get { return _method; }
+        }
+
         public object Invoke(object[] parameters)
         {
             return _method.Invoke(_target, parameters);

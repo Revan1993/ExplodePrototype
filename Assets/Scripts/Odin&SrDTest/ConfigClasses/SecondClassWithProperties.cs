@@ -12,6 +12,7 @@ namespace DefaultNamespace.Odin_SrDTest.ConfigClasses
         
         public InnerClass Class = new InnerClass();
         
+        [SROptions.SrIgnore]
         public void Dispose()
         {
             SRDebug.Instance?.RemoveOptionContainer(Class);    
