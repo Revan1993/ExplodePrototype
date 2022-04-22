@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using Sirenix.OdinInspector;
 using UnityEngine;
+
 namespace DefaultNamespace.Odin_SrDTest.ConfigClasses
 {
     [Serializable]
